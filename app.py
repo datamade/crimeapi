@@ -227,7 +227,7 @@ def print_page():
                 else:
                     shape = requests.get('%s/community_areas/%s.geojson' % (shapes_base_url, ca.zfill(2)))
                     with open(ca_path % ca, 'w') as f:
-                        f.write(shape.content)
+                        f.write(shape.content.decode('utf-8'))
                     print_data['shape_overlays'].append(shape.content)
         if 'location_geom__within' in query.keys():
             shape = query['location_geom__within']
