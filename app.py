@@ -293,7 +293,6 @@ def crime():
     if results.status_code == 200:
         cur = get_db().cursor()
         objs = results.json()['objects']
-        print(objs)
         resp['meta']['total_results'] = len(objs)
         if locs:
             resp['meta']['query']['locations'] = ','.join(locs)
