@@ -3,7 +3,7 @@ from datetime import datetime
 import sqlite3
 import json
 from urllib.parse import urlparse, unquote
-from io import StringIO
+from io import BytesIO
 from itertools import groupby
 from operator import itemgetter
 
@@ -140,7 +140,7 @@ def crime_report():
                 if key == 'time_of_day':
                     value = parser.parse(result['date']).strftime('%H:%M')
                 sheet.write(i, j, value)
-        out = StringIO()
+        out = BytesIO()
         book.save(out)
         resp = make_response(out.getvalue())
     else:
